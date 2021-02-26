@@ -1,4 +1,5 @@
 import './App.css';
+import UserList from './components/UserList'
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <header className="App-header">
         <h1>Random User Exercise</h1>
       </header>
+      <UserList />
     </div>
   );
 }
