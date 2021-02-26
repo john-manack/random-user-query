@@ -1,9 +1,12 @@
+import './UserCard.css'
+
 const UserCard = (props) => {
+    const { user } = props;
     return (
-        <>
-            <h2>User Card</h2>
-            <p>This will contain user data</p>
-        </>
+        <li>
+            <img src={user.picture.large} alt={`${user.name.first} ${user.name.last}`}/>
+            <h2>{user.name.first} {user.name.last}</h2>
+        </li>
     )
 }
 

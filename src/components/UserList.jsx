@@ -10,14 +10,12 @@ class UserList extends Component {
     }
     
     _loadData = async () => {
-        const data = await fetch('https://randomuser.me/api/?results=1').then(response => response.json());
+        const data = await fetch('https://randomuser.me/api/?results=10').then(response => response.json());
         return data;
     }
 
     async componentDidMount() {
         const apiData = await this._loadData();
-        console.log("COMPONENT MOUNTED");
-        console.log("user data", apiData);
         this.setState({
             userData: apiData.results,
         })
@@ -26,13 +24,15 @@ class UserList extends Component {
     render() {
         const { userData } = this.state;
         return (
-            <>
+            <ul>
                 {userData.length ? (
-                    <UserCard user={userData} />
+                    userData.map((user, index) => {
+                        return <UserCard user={user} key={`${user.name.first}-${index}}`}/>
+                    })
                 ) : (
                     <p>Loading User Data</p>
                 )}
-            </>
+            </ul>
         );
     }
 }
